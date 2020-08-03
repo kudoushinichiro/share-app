@@ -20,7 +20,6 @@ module ShareApp
       g.skip_routes   true
       g.assets false
       g.test_framework false
-      g.template_engine :slim
     end
   end
 end
