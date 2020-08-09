@@ -1,6 +1,7 @@
 doctype html
 html
   head
+    meta content=("text/html; charset=UTF-8") http-equiv="Content-Type" /
     title
       | ShareApp
     = csrf_meta_tags
@@ -10,12 +11,12 @@ html
   body
     - if logged_in?
       /sorcery公式ページにてメソッド確認。"Available in views"
-      / = render 'shared/header'
-        /ログイン時のヘッダー。これからつくる
+      = render 'shared/header'
+        /ログイン時のヘッダー
     - else
-      / =render 'shared/before_login_header'
-        /非ログイン時のヘッダー。これからつくる
-    / = render 'shared/flash_messages'
-      /ヘッダーへのフラッシュメッセージの表示。これからつくる
+      =render 'shared/before_login_header'
+        /非ログイン時のヘッダー
+    = render 'shared/flash_messages'
+      /ヘッダーへのフラッシュメッセージの表示
 
     = yield

@@ -3,7 +3,7 @@
     .card.mb-3
       = form_with model: @user, class: 'card-body', local: true do |f|
         / エラーメッセージはあとで実装すること
-        
+
         .form-group
           = f.label :username, class: 'bmd-label-floating'
           = f.text_field :username, class: 'form-control'
