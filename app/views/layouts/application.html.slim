@@ -8,4 +8,14 @@ html
     = stylesheet_link_tag    'application', media: 'all'
     = javascript_include_tag 'application'
   body
+    - if logged_in?
+      /sorcery公式ページにてメソッド確認。"Available in views"
+      / = render 'shared/header'
+        /ログイン時のヘッダー。これからつくる
+    - else
+      / =render 'shared/before_login_header'
+        /非ログイン時のヘッダー。これからつくる
+    / = render 'shared/flash_messages'
+      /ヘッダーへのフラッシュメッセージの表示。これからつくる
+
     = yield
