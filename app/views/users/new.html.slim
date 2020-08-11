@@ -2,7 +2,7 @@
   .login-register-form-inner
     .card.mb-3
       = form_with model: @user, class: 'card-body', local: true do |f|
-        / エラーメッセージはあとで実装すること
+        = render 'shared/error_messages', object: @user
 
         .form-group
           = f.label :username, class: 'bmd-label-floating'
