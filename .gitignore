@@ -27,3 +27,6 @@
 /config/master.key
 
 /public/uploads
+
+dump.rdb
+.DS_Store

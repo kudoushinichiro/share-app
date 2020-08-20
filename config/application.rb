@@ -20,6 +20,7 @@ module ShareApp
       g.skip_routes   true
       g.assets false
       g.helper false
+      g.test_framework false # コントローラー生成時にいろんなテストページが追加されたが、見本には一切なかったため今後は不要と判断
     end
 
     config.time_zone = 'Tokyo'
