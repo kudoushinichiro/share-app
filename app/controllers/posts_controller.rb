@@ -3,7 +3,10 @@ class PostsController < ApplicationController
   # require_loginメソッドにより、ログインしていないユーザは上記５つのアクションを実行できない
 
   def index
-    @posts = Post.all
+    # @posts = Post.all このままだとuser_idについてsqlが多量発行される（N+1）
+    # 参考記事：https://qiita.com/TsubasaTakagi/items/8c3f4317ad917924b860
+    @posts = Post.all.includes(:user).order(created_at: :desc)
+    # orderはrailsのActiveRecordメソッドのひとつ。()内記述で並び順を変更できる。descは降順
   end
 
   def new
