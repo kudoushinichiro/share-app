@@ -1,8 +1,12 @@
 .post-detail.card
   .image-box
-    - @post.images.each do |image|
-      = image_tag image.url
-    
+    .swiper-container
+      .swiper-wrapper
+        - @post.images.each do |image|
+          .swiper-slide
+            = image_tag image.url
+      .swiper-pagination
+
   .image-info-box
     .profile-box.p-3
       .d-flex.align-items-center
