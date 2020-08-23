@@ -20,11 +20,12 @@ module ShareApp
       g.skip_routes   true
       g.assets false
       g.helper false
+      g.test_framework false # コントローラー生成時にいろんなテストページが追加されたが、見本には一切なかったため今後は不要と判断
     end
 
     config.time_zone = 'Tokyo'
     config.active_record.default_timezone = :local
     config.i18n.default_locale = :ja
-    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}').to_s]
+    config.i18n.load_path += Dir[Rails.root.join('config/locales/**/*.{rb,yml}').to_s]
   end
 end
