@@ -5,8 +5,12 @@ class PostsController < ApplicationController
   def index
     # @posts = Post.all このままだとuser_idについてsqlが多量発行される（N+1）
     # 参考記事：https://qiita.com/TsubasaTakagi/items/8c3f4317ad917924b860
-    @posts = Post.all.includes(:user).order(created_at: :desc)
     # orderはrailsのActiveRecordメソッドのひとつ。()内記述で並び順を変更できる。descは降順
+
+    # .pageはkaminariの機能でページの情報を取得できる
+    # params[:page]により現在のページパラメーターを受け取っている
+    # kaminariのデフォルト設定により最初のページはparamsを無視する（config.params_on_first_page = false）
+    @posts = Post.all.includes(:user).order(created_at: :desc).page(params[:page])
   end
 
   def new
