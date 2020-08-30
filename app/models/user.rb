@@ -19,9 +19,9 @@ class User < ApplicationRecord
   authenticates_with_sorcery!
 
   has_many :posts, dependent: :destroy
-  # userは複数のpostを持つというアソシエーション
-  # userとpost両方ともアソシエーションを記入する必要がある
-  # dependent: :destroyを設定することで、userを削除したときアソシエーション先（この場合はposts）にもdestroyアクションを実行することができる（削除できる）
+  has_many :comments, dependent: :destroy
+  # userは、複数のpost/複数のcommentを持つ
+  # dependent: :destroyを設定することで、userを削除したときアソシエーション先（この場合はpost・comment）にもdestroyアクションを実行することができる（削除できる）
 
   validates :username, uniqueness: true, presence: true
   validates :password, length: { minimum: 3 }, if: -> { new_record? || changes[:crypted_password] }
