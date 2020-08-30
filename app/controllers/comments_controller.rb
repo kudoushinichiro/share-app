@@ -7,18 +7,15 @@ class CommentsController < ApplicationController
     # current_userを指定してコメントのcreateを実行する
   end
 
-  # editはshallowの対象
   def edit
     @comment = current_user.comments.find(params[:id])
   end
 
-  # updateはshallowの対象
   def update
     @comment = current_user.comments.find(params[:id])
     @comment.update(comment_update_params)
   end
 
-  # destroyはshallowの対象
   def destroy
     @comment = current_user.comments.find(params[:id])
     @comment.destroy
@@ -28,9 +25,8 @@ class CommentsController < ApplicationController
 
   def comment_params
     params.require(:comment).permit(:body).merge(post_id: params[:post_id])
-    # user_idとpost_idをcommentに紐づけて保存出来るようにする
-    # もしかしてmerge(user_id: current_user.id)って必要ないのでしょうか？
-    # current_user.comments.create(comment_params)ですでにuser_idを取得できている？
+    # post_idをcommentに紐づけて保存出来るようにする
+    # user_idについてはcurrent_user.comments.create(comment_params)で取得できている
   end
 
   def comment_update_params

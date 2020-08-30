@@ -37,5 +37,4 @@ class Post < ApplicationRecord
   validates :body, presence: true, length: { maximum: 255 }
   validates :images, presence: true
   # migrationファイルでnullfalseをつけたものはこちらでもバリデーションをつける。
-  # bodyはなんとなく最大255文字までにしたけど、一般的に何文字くらいにするのがよいのだろう？
 end
