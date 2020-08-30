@@ -4,9 +4,7 @@ class PostsController < ApplicationController
 
   def index
     # @posts = Post.all このままだとuser_idについてsqlが多量発行される（N+1）
-    # 参考記事：https://qiita.com/TsubasaTakagi/items/8c3f4317ad917924b860
     # orderはrailsのActiveRecordメソッドのひとつ。()内記述で並び順を変更できる。descは降順
-
     # .pageはkaminariの機能でページの情報を取得できる
     # params[:page]により現在のページパラメーターを受け取っている
     # kaminariのデフォルト設定により最初のページはparamsを無視する（config.params_on_first_page = false）
@@ -29,10 +27,8 @@ class PostsController < ApplicationController
 
   def edit
     @post = current_user.posts.find(params[:id])
-    # 見本に合わせた形で記述しましたが、以下疑問点です。
-    # @post = Post.find(params[:id])でない理由はなんでしょう？？
-    # current_userをつけることで、何かの間違いで別ユーザがeditできてしまう事故を防いでいる？
-    # コメントの方の記述の方が良く見かける形で一般的なのではと考えています。
+    # 他人が編集ページに遷移できなくするためにcurrent_userをつけている。
+    # 上記を設定しないと/posts/:id/editのid部分を変えたら入れてしまう。
   end
 
   def update

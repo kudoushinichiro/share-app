@@ -2,8 +2,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
-  # これを外さないで投稿したら、undefined method `resize_to_limit’というエラーがでた
-  # おそらく、リサイズ等画像の加工処理をするにはMiniMagickが必要なのだと思う
+  # リサイズ等画像の加工処理をするにはMiniMagickが必要
 
   # ファイルの保存先の設定。
   # Choose what kind of storage to use for this uploader:

@@ -5,7 +5,6 @@
     = f.file_field :images, multiple: true, class: 'form-control'
     - post.images.each do |image|
       = image_tag image.url, size: '100x100', class: 'image-thumbnail'
-      / image-thumbnailクラスはcssで使用
 
   .form-group
     = f.label :body
