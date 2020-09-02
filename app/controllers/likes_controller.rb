@@ -1,5 +1,4 @@
 class LikesController < ApplicationController
-
   def create
     @post = Post.find(params[:post_id])
     current_user.like(@post)
@@ -12,5 +11,4 @@ class LikesController < ApplicationController
     current_user.unlike(@post)
     # userモデルで設定したunlikeメソッドを実行している。
   end
-
 end
