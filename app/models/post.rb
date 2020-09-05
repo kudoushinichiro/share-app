@@ -34,6 +34,11 @@ class Post < ApplicationRecord
   # postは複数のcommentを持つ
   # dependent: :destroyについてはuserモデルに記述済
 
+  has_many :likes, dependent: :destroy
+  # ↓いいねをしたuserを取得するための記述
+  has_many :like_users, through: :likes, source: :user
+  # 記述意図はuser.rbと重複するので割愛
+
   validates :body, presence: true, length: { maximum: 255 }
   validates :images, presence: true
   # migrationファイルでnullfalseをつけたものはこちらでもバリデーションをつける。

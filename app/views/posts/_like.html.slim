@@ -1,0 +1,9 @@
+= link_to likes_path(post_id: post.id), method: :post, remote: true do
+  = icon 'far', 'heart', class: 'fa-lg'
+
+/ like_areaにていいねされていないの投稿である場合の表示。
+/ 色が塗られていないハートが表示されていて、ボタンを押すといいねをする(post)という処理をリクエストする。
+/ ※↓理解が怪しい※
+/ ルーティングでは、"likes POST   /likes(.:format)  likes#create" となっており、
+/ リンク先は単純に"link_to likes_path"のみで良いようにも思える？
+/ コントローラーに(params[:post_id])を渡せるように"link_to likes_path(post_id: post.id)"と記述しているのではないかと考えた。
