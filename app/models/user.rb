@@ -82,15 +82,20 @@ class User < ApplicationRecord
   def unfollow(other_user)
     followings.destroy(other_user)
     # current_userが持つ"followings"に格納されているother_user(コントローラーから受け取った@user)を削除する。
-  en
+  end
 
   def following?(other_user)
     followings.include?(other_user)
+    # current_userが持つ"followings"にview(_follow_area)より受け取った"userオブジェクト"が格納されているかどうかを確認する。
+    # 配列followingsが、userと等しい要素を持つ時にtrue、持たない時にfalseを返す。
   end
 
   def feed
     Post.where(user_id: followings_ids << id)
   end
+
+  scope :recent, ->(count) { order(created_at: :desc).limit(count) }
+  # 作成順での並び替え。(count)で数字を引数として受け取れる。
 
   validates :username, uniqueness: true, presence: true
   validates :password, length: { minimum: 3 }, if: -> { new_record? || changes[:crypted_password] }

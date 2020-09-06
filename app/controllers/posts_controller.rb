@@ -9,6 +9,7 @@ class PostsController < ApplicationController
     # params[:page]により現在のページパラメーターを受け取っている
     # kaminariのデフォルト設定により最初のページはparamsを無視する（config.params_on_first_page = false）
     @posts = Post.all.includes(:user).order(created_at: :desc).page(params[:page])
+    @users = User.recent(5)
   end
 
   def new
