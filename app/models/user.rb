@@ -90,7 +90,7 @@ class User < ApplicationRecord
     # 配列followingsが、userと等しい要素を持つ時にtrue、持たない時にfalseを返す。
   end
 
-  # ※※ここの部分の理解が曖昧な状態です・・・※※
+  # ※※ここの部分について質問フォームでも質問しています・・・※※
   def feed
     Post.where(user_id: following_ids << id)
     # postの中から、post.user_idが条件に一致するものを探す。
