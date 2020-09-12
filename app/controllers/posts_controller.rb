@@ -8,7 +8,6 @@ class PostsController < ApplicationController
     # .pageはkaminariの機能でページの情報を取得できる
     # params[:page]により現在のページパラメーターを受け取っている
     # kaminariのデフォルト設定により最初のページはparamsを無視する（config.params_on_first_page = false）
-
     @posts = if current_user
               # ログイン中であれば、ログインしているユーザーがフォローしている人の投稿のみ表示される分岐
               current_user.feed.includes(:user).page(params[:page]).order(created_at: :desc)

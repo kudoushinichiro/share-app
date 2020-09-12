@@ -11,7 +11,7 @@ class RelationshipsController < ApplicationController
 
   def destroy
     @user = Relationship.find(params[:id]).followed
-    # モデルで設定している仕様では"配列形式？に格納しているother_user"を取り除きたい.
+    # モデルで設定している仕様では"配列形式に格納しているother_user"を取り除きたい.
     # なので削除しようとしているRelationshipレコードから"followedカラム"のユーザー情報を取得し@userに入れている。
     current_user.unfollow(@user)
     # userモデルで設定したメソッドを実行している。
