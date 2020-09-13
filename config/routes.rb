@@ -3,6 +3,12 @@ Rails.application.routes.draw do
 
   resources :users, only: %i[index new create show]
   resources :posts do
+    collection do
+      get 'search'
+      # ネストすることでpostsコントローラーのsearchアクションを取得する。
+      # collectionによりposts全体を対象としているため、idを必要としないパスとなる。
+      # postのみネストしているのでcommentsは検索対象とならない。
+    end
     resources :comments, shallow: true
   end
   # shallowオプションについてはRailsガイド'ルーティング'の2.7.2を参考に記述
