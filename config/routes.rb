@@ -7,7 +7,6 @@ Rails.application.routes.draw do
       get 'search'
       # ネストすることでpostsコントローラーのsearchアクションを取得する。
       # collectionによりposts全体を対象としているため、idを必要としないパスとなる。
-      # postのみネストしているのでcommentsは検索対象とならない。
     end
     resources :comments, shallow: true
   end

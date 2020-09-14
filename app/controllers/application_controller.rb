@@ -21,7 +21,6 @@ class ApplicationController < ActionController::Base
   def search_post_params
     params.fetch(:q, {}).permit(:body)
     # fetchメソッドにより、キー"q"について{" "}がデフォルト値として扱われるようになる。
-    # "q"というキーの由来が分からず気持ち悪かったので、inputsearchとしてみました。
-    # 記事を調べても、皆当たり前のように検索入力値の受取には"q"を使用している。なぜ・・・
+    # "q"はqueryの略。GETリクエストのパラメータをクエリと呼ぶのが一般的。
   end
 end
