@@ -11,9 +11,5 @@
             = render 'follow_area', user: @user
           hr
           .row
-            = render partial: 'posts/thumbnail_post', collection: @user.posts, as: "thisPost"
+            = render partial: 'posts/thumbnail_post', collection: @user.posts
             / showページが所持している@user.postsを"posts/thumbnail_post"へ渡す
-            / 〜〜見本にはない「as: "thisPost"」について〜〜
-            / collectionで@user.postsとしているので、部分テンプレート先に渡す変数名は「user.post」となると考えていた。
-            / しかし、部分テンプレート先では"thumbnail_post"が変数として使われている。(user.postだとエラーになる)
-            / どこかで「部分テンプレート名を変数名に当てるのはあまり良くない」というのを見た気がする（気のせいかも）
