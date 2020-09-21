@@ -18,7 +18,8 @@
       - if logged_in?
         .profile-box.mb-3
           = image_tag current_user.avatar.url, size: '50x50', class: 'rounded-circle mr-1'
-          = link_to current_user.username, edit_mypage_account_path
+          = link_to current_user.username, user_path(current_user)
+          / いきなり編集ページに飛んでしまうのは違和感があったのでユーザーページへのリンクにしています。
 
       .users-box
         .card
