@@ -5,11 +5,6 @@
         .card-body
           - if current_user&.id == @user.id
             / ぼっち演算子を使用し、current_userがnilだった場合にそのままnilを返しエラーを回避する。
-            / 以下のような記述でもアリかなと考えているのですが、どうでしょうか？(個人的には分かりやすい気がしてます)
-            / 『- if logged_in? && current_user.id == @user.id』
-            / 未ログインの場合は短絡評価が適用され、左辺の条件式①の時点でfalseが得られ、右辺は無視されるのでエラーは出ない。
-            / logged_in?がtrueの場合のみ右辺の条件式②が評価されるのでcurrent_userはnilにはならない。
-
             .text-center.mb-3
               = link_to 'プロフィール編集', edit_mypage_account_path, class: 'btn btn-raised btn-warning'
           .text-center.mb-3
